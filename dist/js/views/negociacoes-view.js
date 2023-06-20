@@ -15,7 +15,7 @@ export default class NegociacaoView extends View {
             .lista()
             .map((negociacao) => {
             return `<tr>
-                        <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                        <td>${this.formatarData(negociacao.data)}</td>
                         <td>${negociacao.quantidade}</td>
                         <td>${negociacao.valor}</td>
                      </tr>`;
@@ -27,5 +27,8 @@ export default class NegociacaoView extends View {
     }
     update(listaNegociacoes) {
         this.elemento.innerHTML = this.template(listaNegociacoes);
+    }
+    formatarData(data) {
+        return new Intl.DateTimeFormat().format(data);
     }
 }
